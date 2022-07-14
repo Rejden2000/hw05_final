@@ -1,0 +1,15 @@
+<!DOCTYPE html> <!-- Используется html 5 версии -->
+<div class="footer-copyright text-center py-3">© {{ year }} Copyright 
+  <p><span style="color:red">Ya</span>tube</p>
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'posts:contact' %}"><font face="Segoe Print"><b>Написать автору</b></font></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'about:author' %}"><font face="Segoe Print"><b>Об авторе</b></font></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'about:tech' %}"><font face="Segoe Print"><b>Технологии</b></font></a>
+    </li>  
+  </ul>
+</div> 

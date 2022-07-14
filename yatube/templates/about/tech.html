@@ -1,0 +1,48 @@
+<!-- templates/about/tech.html -->
+{% extends "base.html" %}
+{% block title %}Технологии{% endblock %}
+{% block content %}
+
+<div class="container py-5">
+  <h1 align="center">Перечень возможностей сайта "Yatybe"</h1>
+  <br>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card card-body h-100  border-info" id="profile-wrapper">
+        <h4>Django!</h4>
+        <hr>
+        <p>Данный сайт написан с использованием высокоуровневого <br>Python веб-фреймворка Django</p>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="card card-body h-100  border-info">
+        <h4>Функционал сайта</h4>
+        <hr>
+        <p>Данный сайт был написан за 2 месяца, в нём используются базы данных для хранения
+          информации о пользователях и их записей. Функцианал сайта включает в себя возможность регистрации 
+          и аутентификации пользователей, а также просмотр, добавление, редактирование и удаления ими запсей.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% comment %} <div class="container py-5"
+  <div class="row">
+    <h1>Перечень возможностей сайта "Yatybe"</h1>
+    <div class="col-md-3">
+      <div class="card card-body h-100  border-info">
+        <p>Данный сайт написан с использованием высокоуровневого <br>Python веб-фреймворка Django</p>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="card card-body h-100  border-info">
+        <p>Данный сайт был написан за 2 месяца, в нём используются базы данных для хранения
+          информации о пользователях и их записей. Функцианал сайта включает в себя возможность регистрации 
+          и аутентификации пользователей, а также просмотр, добавление, редактирование и удаления ими запсей.
+        </p>
+      </div>
+    </div>
+  </div>
+</div> {% endcomment %}
+{% endblock %}

@@ -1,0 +1,48 @@
+<!DOCTYPE html> <!-- Используется html 5 версии -->
+{% extends 'base.html' %}
+{% block title %}
+Записи сообщества {{ group.title }}
+{% endblock %}
+{% block content %}
+{% load thumbnail %}  
+  <main>
+    <div class="container py-5">
+      {% block header %}{{ group.title }}{% endblock %}
+      <h1>
+        {{ group.title }}
+      </h1>
+      <p>
+        {{ group.description }}
+      </p>
+      {% for post in page_obj %}
+        <article>
+          <ul>
+            <li>
+              Автор: {{ post.author.first_name }} {{ post.author.last_name }}
+            </li>
+            <li>
+              {{ post.pub_date }}
+            </li>
+          </ul>
+          {% thumbnail post.image "960x339" crop="center" upscale=True as im %}
+          <img class="card-img my-2" src="{{ im.url }}">
+          {% endthumbnail %}           
+          {{ post.text|linebreaks|truncatewords:70 }}
+          <div align="right">
+            <a class="btn btn-primary" href="{% url 'posts:profile' post.author %}">
+              Все записи автора
+            </a>
+            <span>&nbsp;</span> 
+            <a class="btn btn-primary" href="{% url 'posts:post_detail' post.id %}">
+              Читать пост
+            </a>  
+          </div>       
+        </article>
+        {% if not forloop.last %}
+          <hr>
+        {% endif %}
+      {% endfor %}
+      {% include 'includes/paginator.html' %}
+    </div>  
+  </main>
+{% endblock %}
