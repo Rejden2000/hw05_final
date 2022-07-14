@@ -281,7 +281,7 @@ class PaginatorViewsTest(TestCase):
         Follow.objects.create(user=self.auth, author=following)
         post = Post.objects.create(author=following, text='Тестовая коммент')
         response = self.authorized_client.get(reverse('posts:follow_index'))
-        self.assertIn(post, response.context['page'].object_list)
+        self.assertIn(post, response.context['page_obj'].object_list)
 
         self.authorized_client.logout()
         User.objects.create_user(
@@ -290,4 +290,4 @@ class PaginatorViewsTest(TestCase):
         )
         self.authorized_client.login(username='user_temp', password='pass')
         response = self.authorized_client.get(reverse('posts:follow_index'))
-        self.assertNotIn(post, response.context['page'].object_list)
+        self.assertNotIn(post, response.context['page_obj'].object_list)

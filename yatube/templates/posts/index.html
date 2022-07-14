@@ -11,7 +11,7 @@
       <h1><font face="Segoe Print">Последние обновления на сайте</font></h1>
       <br>
       {% include 'includes/switcher.html' %}
-      {% cache 20 index_page page_obj.number%}
+      {% cache 20 index_page %}
       {% for post in page_obj %}
         <article>
           <ul>
