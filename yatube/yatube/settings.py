@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
     'sorl.thumbnail',
-    'django_cleanup.apps.CleanupConfig',
     'django_cleanup',
 ]
 
