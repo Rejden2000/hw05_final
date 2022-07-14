@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'sorl.thumbnail',
     'django_cleanup.apps.CleanupConfig',
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [
