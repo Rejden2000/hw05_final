@@ -1,10 +1,12 @@
-import shutil
-import tempfile
 from django.conf import settings
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.core.cache import cache
 from django.contrib.auth import get_user_model
 from django.test import TestCase, Client, override_settings
 from django.urls import reverse
+from rest_framework import status
+import shutil
+import tempfile
 from ..models import Group, Post
 
 User = get_user_model()
@@ -37,6 +39,7 @@ class PostCreateFormTests(TestCase):
         self.guest_client = Client()
         self.authorized_author = Client()
         self.authorized_author.force_login(self.author)
+        cache.clear()
 
     def test_post_create_form(self):
         """Валидная форма создает запись в БД и
@@ -66,7 +69,7 @@ class PostCreateFormTests(TestCase):
             follow=True
         )
         post_latest = Post.objects.latest('id')
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertRedirects(response, reverse(
             'posts:profile', kwargs={'username': 'NoName'}))
         self.assertEqual(Post.objects.count(), posts_count + 1)

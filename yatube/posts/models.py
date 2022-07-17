@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from core.models import CreatedModel
 
 User = get_user_model()
 
@@ -43,7 +44,7 @@ class Post(models.Model):
         ordering = ('-pub_date',)
 
 
-class Comment(models.Model):
+class Comment(CreatedModel, models.Model):
     post = models.ForeignKey(Post, blank=True, null=True,
                              on_delete=models.CASCADE, related_name="comments",
                              verbose_name="Комментируемый пост")
@@ -55,8 +56,6 @@ class Comment(models.Model):
     )
     text = models.TextField(verbose_name="Текст комментария",
                             help_text="Поле для записи комментария.")
-    created = models.DateTimeField(auto_now_add=True,
-                                   verbose_name="Дата комментария")
 
 
 class Follow(models.Model):
@@ -72,3 +71,8 @@ class Follow(models.Model):
         related_name="follower",
         verbose_name='Автор комментария',
     )
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['author','user'],  name="unique_followers")
+        ]
