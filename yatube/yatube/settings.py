@@ -26,10 +26,12 @@ SECRET_KEY = 'otpqwe9&+bpvfjsru))l*^eog844&+*4i8l^v4*2ctnaq481s$'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '[::1]',
-    'testserver',
+    'www.rejden2000.pythonanywhere.com',
+    'rejden2000.pythonanywhere.com',
+    # 'localhost',
+    # '127.0.0.1',
+    # '[::1]',
+    # 'testserver',
 ]
 
 
